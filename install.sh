@@ -49,30 +49,7 @@ echo "...dataset download done!"
 
 echo "Step 2:"
 echo "...setup the environment"
-if type conda &> /dev/null
-    then
-        echo "Anaconda exists in $PATH, will create a $ENV_NAME virtual environment."
-        if conda env list | grep $ENV_NAME$ &> /dev/null
-        then
-            echo "anaconda environment $ENV_NAME already exits. Update? (y/n)"
-            read update_conda
-            if [ $update_conda == 'y' ]
-            then
-                conda env update -f ./environment.yml
-            else
-                echo 'environemnt update is aborted. Please check your anaconda environment.'
-                exit 1
-            fi
-        else
-            conda env create -f ./environment.yml
-        fi
-    else
-        echo "Anaconda do not exists, consider installing?"
-        echo "With anaconda, the execution environment will be replicated."
-        echo "As always, one can create the virtualenv without anaconda, but the code is not tested against that."
-        echo "...Aborting"
-        exit 1
-fi
+pip install -r requirements.txt
 echo "...environment setup done!"
 
 echo "Step 3:"
@@ -85,14 +62,8 @@ echo "If the problem persists, please open an issue here at github!"
 echo "...environment validation done!"
 
 
+
 echo "Step 4:"
-echo "...Initializing gitsubmodule"
-git submodule update --init
-echo "git submodule updated"
-echo "...git submodule installation done"
-
-
-echo "Step 5:"
 echo "...Downloading pretrained models"
 if [ -f ./pretrained_models/mnist-results/trained_params.npz ]
     then
@@ -108,9 +79,5 @@ if [ -f ./pretrained_models/shapes-results/trained_params.npz ]
         wget http://cdn.cai.fi/pretrained-models/shapes50k20x20_trained_params_20160803.npz -P ./pretrained_models/shapes-results/
         mv ./pretrained_models/shapes-results/shapes50k20x20_trained_params_20160803.npz ./pretrained_models/shapes-results/trained_params.npz
 fi
-
-echo "####"
-echo "Please run 'source activate $ENV_NAME' to enable your environment."
-echo "####"
 
 echo "Happy tinkering!"

@@ -16,8 +16,8 @@ p.labeled_samples = 0
 p.save_freq = 50
 p.seed = 1
 p.num_epochs = 200
-p.batch_size = 100
-p.valid_batch_size = 100
+p.batch_size = 10
+p.valid_batch_size = 10
 p.objects_per_sample = 2
 
 p.dataset = 'mario_10K'

@@ -229,4 +229,6 @@ DATASETS = {
     'shapes50k20x20':       part(Dataset, part(H5PYDataset, file_or_path='data/shapes50k_20x20_compressed.h5', load_in_memory=True), has_valid=True, dim=(400,)),
     'freq20-2mnist':        part(Dataset, part(H5PYDataset, file_or_path='data/freq20-2MNIST_compressed.h5', load_in_memory=True), has_valid=True, dim=(1, 28, 28)),
     'freq20-1mnist':        part(Dataset, part(H5PYDataset, file_or_path='data/freq20-1MNIST_compressed.h5', load_in_memory=True), has_valid=True, dim=(1, 28, 28)),
+    'mario_100':            part(Dataset, part(H5PYDataset, file_or_path='data/mario_100_compressed.h5', load_in_memory=True), has_valid=True, dim=(1, 84, 84)),
+    'mario_10K':            part(Dataset, part(H5PYDataset, file_or_path='data/mario_100_compressed.h5', load_in_memory=True), has_valid=True, dim=(1, 84, 84)),
 }
